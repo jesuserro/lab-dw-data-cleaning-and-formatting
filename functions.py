@@ -42,10 +42,10 @@ def fillna_columns(df):
         if df[column].isnull().sum() > 0:  # Si la columna tiene valores nulos
             if df[column].dtype in ['int64', 'float64']:  # Si es numérica
                 median_value = df[column].median()
-                df[column].fillna(median_value, inplace=True)
+                df[column] = df[column].fillna(median_value)
             else:  # Si es categórica
                 mode_value = df[column].mode()[0]
-                df[column].fillna(mode_value, inplace=True)
+                df[column] = df[column].fillna(mode_value)
     return df
 
 def main(df):
